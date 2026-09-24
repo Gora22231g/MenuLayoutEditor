@@ -1,87 +1,47 @@
-# Menu Layout Editor 1.3.0
+# Menu Layout Editor
 
-Авторы: **Gora22231g** и **Igch7**.
+Customize your main menu with **Gora22231g & Igch7**.
 
-Windows x64 · Geometry Dash 2.2081 · Geode 5.10.1.
+Move buttons and titles, line up nearby elements, or split a logo into independent pieces. Save your layout and pick up where you left off next time.
 
-## Установка и обновление
+## Getting started
 
-Закрой игру и замени старый `gorik.menu_layout_editor.geode` новым файлом в `Geometry Dash/geode/mods`.
-Не оставляй две копии мода. Затем открой **Settings → Graphics → Menu Editor**.
-Кнопки входа в главном меню и на первой странице Settings удалены.
-Редактор открывается из настроек главного меню, не из уровня.
+Open **Settings > Graphics > Menu Editor** from the main menu. On your first launch, an interactive guide highlights each button while blurring the rest of the screen. Click the highlighted button to continue, or choose **Skip guide**. The guide remembers completion or dismissal. If the blur shader is unavailable, the background is dimmed instead.
 
-## Первый запуск
+## Build your layout
 
-При первом появлении главного меню запускается обучение: **Settings → Graphics → Menu Editor**. Нужная кнопка выделяется рамкой и стрелкой, остальной экран размывается и затемняется. Нажми на выделенную кнопку, чтобы перейти дальше. **Skip guide / Esc** пропускает обучение. Прохождение или пропуск запоминается между запусками.
+- **Move:** click an element and drag it. **Prev / Next** also select hidden elements.
+- **Snap: ON/OFF:** align nearby edges and centers. Pull farther away to detach, or turn snapping off for free movement.
+- **Cut V / Cut H:** select an element, choose a cut direction, then click where the cut should go. Both pieces can be moved separately.
+- **Crop:** select an element, click Crop, and drag a rectangle over the area you want to keep.
+- **Hide/Show:** hide or reveal the selected element or piece.
+- **Panel:** move the toolbar to the bottom or top so it does not cover your work.
 
-Если нужная кнопка изменена другим модом и не найдена, обучение показывает путь текстом и позволяет выйти. Если драйвер не поддерживает шейдер, используется затемнение без размытия. Подсказки в игре на английском для совместимости со шрифтами GD.
+For example, select the Geometry Dash title, choose **Cut V**, and click between the words. Switch to **Move**, then position Geometry and Dash separately.
 
-## Управление
+## Share a layout
 
-- **Перемещение:** нажми на элемент и перетащи. Prev / Next выбирают элементы, включая скрытые части.
-- **Snap: ON/OFF:** включить или выключить прилипание. На расстоянии до 6 игровых единиц выравниваются края и центры ближайших элементов. Примыкающие края могут становиться вплотную; элементы не объединяются в группу. Голубая рамка означает срабатывание прилипания. Положение мыши остаётся свободным: потяни дальше, чтобы отлепить.
-- **Cut V:** выбрать элемент, нажать Cut V, затем нажать внутри него на месте вертикального разреза. Для Geometry / Dash нажми в промежутке между словами. Получатся две независимо перемещаемые части.
-- **Cut H:** такой же разрез по горизонтали.
-- **Crop:** выбрать элемент, нажать Crop и протянуть прямоугольник внутри него. Останется выделенная область. Обрезка прямоугольная, не произвольный контур.
-- **Move:** выйти из режима разреза/обрезки. Повторное нажатие активного Cut/Crop тоже выключает режим.
-- **Hide/Show:** скрыть или показать выбранный элемент/часть.
-- **Restore:** вернуть исходный целый элемент, его позицию и видимость. Если выбрана часть, собирается весь её исходный элемент, включая остальные части.
-- **Show all:** показать все существующие элементы и части, сохранив разрезы.
-- **Reset all:** убрать все разрезы и обрезки, восстановить исходную раскладку.
-- **Panel:** перенести панель инструментов сверху вниз или обратно, чтобы получить доступ к закрытым ею элементам.
-- **Save:** сохранить раскладку, разрезы, обрезку, видимость и настройку Snap между запусками.
-- **Cancel / Esc:** отменить изменения текущего сеанса, включая разрезы и обрезку.
+- **Export CFG** writes the current layout to a JSON file through a system save dialog.
+- **Import CFG** opens a JSON config as a preview. Press **Save** to keep it, or **Cancel** to restore your previous layout.
+- **Save folder** opens this mod's Geode save directory. Config exports default to its `exports` subfolder.
 
-**RobTop защищён:** нельзя скрывать, двигать, обрезать или разделять. Старое сохранение с его скрытием игнорируется.
-Обычные кнопки режутся вместе с изображением и текстом внутри. Части кнопки вызывают действие исходной кнопки.
+Configs include positions, cuts, crops, visibility and Snap, without changing tutorial completion. Unknown menu elements are ignored; configs with no matching elements are rejected. Limits: 1 MiB, 512 original elements and 64 pieces.
 
-## Ограничения
+## Save and restore
 
-Разрезанные элементы отображаются как снимки исходного изображения: анимация и обновление текста внутри частей не продолжаются. При восстановлении возвращается живой исходный элемент. Поддерживаются до 64 частей и исходные изображения до 2048 × 2048 игровых единиц. Части воссоздаются при загрузке меню, изображения на диск не записываются.
+- **Save** keeps positions, cuts, crops, visibility and the Snap preference between launches.
+- **Cancel / Esc** discards changes from the current editing session.
+- **Restore** rebuilds the original element and resets its position. Selecting any of its pieces restores the whole element.
+- **Show all** reveals existing elements and pieces without undoing cuts.
+- **Reset all** restores the original layout and removes every cut and crop.
 
-Фон, анимированный игровой слой, всплывающие окна и произвольные вложенные слои сторонних модов не редактируются. Моды с собственной постоянной перестановкой элементов могут конфликтовать. Узлы без ID сохраняются по пути с индексами: после изменения набора модов может понадобиться сброс.
+The **RobTop logo is protected** from hiding, moving, cropping and splitting.
 
-Поскольку отдельного входа в главном меню больше нет, не скрывай кнопку Settings, если хочешь сохранить удобный доступ к редактору.
+## Notes
 
-## Сохранения и CFG
+Cut pieces are static images; their original animation or changing text does not continue. Pieces forward the original button action while that button remains attached, running and enabled. Restore brings the live original back. The background and animated game layer are not editable. Snapshot textures are shared per original element and limited to a 64 MiB budget. Other menu customization mods may conflict.
 
-Раскладка, Snap и флаг `guide-completed` записываются в `menu-layout.json` через проверяемую безопасную запись файла. Завершение или пропуск гайда выставляет флаг в `true`; после успешного сохранения при следующем запуске гайд не показывается.
+Positions, cuts, Snap and the completed-guide flag are saved in `menu-layout.json` inside the mod's Geode save directory. After successful completion or dismissal, the guide stays closed on future launches. Previous Geode saved values are migrated when the new file does not exist.
 
-На обычной установке Windows файл находится здесь:
-
-`%LOCALAPPDATA%\GeometryDash\geode\mods\gorik.menu_layout_editor\menu-layout.json`
-
-Фактический путь предоставляет Geode (`Mod::get()->getSaveDir()`), поэтому он может отличаться при другом имени EXE или нестандартной установке. Кнопка **Save folder** откроет именно используемую папку. Старый `saved.json` Geode используется для переноса настроек предыдущих версий и как резервный источник. Импорт не меняет прохождение гайда.
-
-- **Export CFG:** выбрать путь в системном окне сохранения. Экспортируется текущий вид меню, включая ещё не применённые изменения.
-- **Import CFG:** выбрать JSON-файл. Раскладка загружается для просмотра; **Save** сохраняет её, **Cancel** возвращает вид до открытия редактора.
-- По умолчанию диалог предлагает подпапку `exports` в папке сохранений мода.
-- Проверяются формат, версия, числовые значения, размер до 1 МиБ, глубина JSON до 16 и максимум 64 части. CFG содержит только данные, код не выполняется.
-- Конфиги рассчитаны на сопоставимые меню и наборы модов. Неизвестные элементы пропускаются, файл без совпадений не применяется.
-
-Метаданные включают авторов, версию, описание, logo.png и теги interface/customization/offline/utility. Результат проверки правил без ИИ-пункта — в AUDIT.md.
-
-## Сборка
-
-Visual Studio 2022 Build Tools с C++, Windows SDK, CMake 3.25+, Git, Geode CLI и SDK 5.10.1.
-Переменная `GEODE_SDK` должна указывать на SDK с `bin/5.10.1/Geode.lib`; CLI должен быть в PATH.
-
-```powershell
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DLAYOUT_BUILD_TESTS=ON
-cmake --build build --config Release --parallel 4
-ctest --test-dir build -C Release --output-on-failure
-```
-
-Результат: `build/gorik.menu_layout_editor.geode`. Автоматической установки в игру нет.
-
-## Источники
-
-- [Создание мода](https://docs.geode-sdk.org/getting-started/create-mod/)
-- [Изменение слоёв](https://docs.geode-sdk.org/handbook/vol1/chap1_6/)
-- [SDK 5.10.1](https://github.com/geode-sdk/geode/tree/v5.10.1)
-- [ID элементов MenuLayer](https://github.com/geode-sdk/geode/blob/v5.10.1/loader/src/ids/MenuLayer.cpp)
-
-Статус проверки приведён в VALIDATION.txt. Проверка в запущенной игре не заменяется успешной компиляцией и тестами геометрии.
-
+Supported build: **Windows x64, Geometry Dash 2.2081, Geode 5.10.1**.
 
