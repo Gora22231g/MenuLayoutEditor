@@ -1,0 +1,11 @@
+{
+  "geode": "5.10.1",
+  "gd": { "win": "2.2081" },
+  "id": "gorik.menu_layout_editor",
+  "name": "Menu Layout Editor",
+  "version": "v1.3.1",
+  "developers": ["Gora22231g", "Igch7"],
+  "description": "Move, align, split and crop main-menu elements. Save layouts, share JSON configs and restore originals. Includes a first-run guide. Open Settings > Graphics > Menu Editor.",
+  "tags": ["interface", "customization", "offline", "utility"]
+}
+
